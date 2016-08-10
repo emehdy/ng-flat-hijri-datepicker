@@ -6,7 +6,7 @@
      * Test code for ng-datepicker demo
      */
     angular
-        .module('testApp', ['ngJalaaliFlatDatepicker'])
+        .module('testApp', ['nghijriFlatDatepicker'])
         .controller('mainController', ['$scope', mainController]);
 
     function mainController ($scope) {

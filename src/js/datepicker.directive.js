@@ -8,10 +8,10 @@
      */
 
     angular
-        .module('ngJalaaliFlatDatepicker', [])
-        .directive('ngJalaaliFlatDatepicker', ngJalaaliFlatDatepickerDirective);
+        .module('nghijriFlatDatepicker', [])
+        .directive('nghijriFlatDatepicker', nghijriFlatDatepickerDirective);
 
-    function ngJalaaliFlatDatepickerDirective($templateCache, $compile, $document, datesCalculator) {
+    function nghijriFlatDatepickerDirective($templateCache, $compile, $document, datesCalculator) {
         var parseConfig = function(config) {
           var temp = angular.fromJson(config);
           if (typeof(temp.minDate) == 'undefined') {
@@ -171,7 +171,7 @@
                  */
                 function init() {
 
-                    element.wrap('<div class="ng-jalaali-flat-datepicker-wrapper"></div>');
+                    element.wrap('<div class="ng-hijri-flat-datepicker-wrapper"></div>');
 
                     $compile(template)(scope);
                     element.after(template);

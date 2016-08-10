@@ -1,13 +1,13 @@
 {
-  "name": "ng-jalaali-flat-datepicker",
+  "name": "ng-hijri-flat-datepicker",
   "version": "1.0.2",
-  "description": "Angular.js Datepicker built with Moment.js for Jalaali Calendar",
-  "homepage": "https://github.com/thg303/ng-jalaali-flat-datepicker#readme",
+  "description": "Angular.js Datepicker built with Moment.js for hijri Calendar",
+  "homepage": "https://github.com/thg303/ng-hijri-flat-datepicker#readme",
   "keywords": [
     "angular.js",
     "angular",
     "datepicker",
-    "jalaali",
+    "hijri",
     "hijri",
     "جلالی",
     "تقویم شمسی",
@@ -15,18 +15,18 @@
     "moment",
     "flat"
   ],
-  "main": "dist/ng-jalaali-flat-datepicker.min.js",
+  "main": "dist/ng-hijri-flat-datepicker.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thg303/ng-jalaali-flat-datepicker.git"
+    "url": "git+https://github.com/thg303/ng-hijri-flat-datepicker.git"
   },
   "author": "Ali Ghanavatian",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thg303/ng-jalaali-flat-datepicker/issues"
+    "url": "https://github.com/thg303/ng-hijri-flat-datepicker/issues"
   },
   "devDependencies": {
     "event-stream": "^3.3.2",
@@ -51,6 +51,6 @@
   "dependencies": {
     "angular": "^1.5.5",
     "moment": "^2.13.0",
-    "moment-jalaali": "^0.4.0"
+    "moment-hijri": "^0.4.0"
   }
 }

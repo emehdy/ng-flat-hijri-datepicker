@@ -34966,16 +34966,16 @@ require.define = function (name, exports) {
   };
 };
 
-require.register("jalaali-js", function (exports, module) {
+require.register("hijri-js", function (exports, module) {
 /*
   Expose functions.
 */
 module.exports =
-  { toJalaali: toJalaali
+  { tohijri: tohijri
   , toGregorian: toGregorian
-  , isValidJalaaliDate: isValidJalaaliDate
-  , isLeapJalaaliYear: isLeapJalaaliYear
-  , jalaaliMonthLength: jalaaliMonthLength
+  , isValidhijriDate: isValidhijriDate
+  , isLeaphijriYear: isLeaphijriYear
+  , hijriMonthLength: hijriMonthLength
   , jalCal: jalCal
   , j2d: j2d
   , d2j: d2j
@@ -34984,61 +34984,61 @@ module.exports =
   }
 
 /*
-  Converts a Gregorian date to Jalaali.
+  Converts a Gregorian date to hijri.
 */
-function toJalaali(gy, gm, gd) {
+function tohijri(gy, gm, gd) {
   return d2j(g2d(gy, gm, gd))
 }
 
 /*
-  Converts a Jalaali date to Gregorian.
+  Converts a hijri date to Gregorian.
 */
 function toGregorian(jy, jm, jd) {
   return d2g(j2d(jy, jm, jd))
 }
 
 /*
-  Checks whether a Jalaali date is valid or not.
+  Checks whether a hijri date is valid or not.
 */
-function isValidJalaaliDate(jy, jm, jd) {
+function isValidhijriDate(jy, jm, jd) {
   return  jy >= -61 && jy <= 3177 &&
           jm >= 1 && jm <= 12 &&
-          jd >= 1 && jd <= jalaaliMonthLength(jy, jm)
+          jd >= 1 && jd <= hijriMonthLength(jy, jm)
 }
 
 /*
   Is this a leap year or not?
 */
-function isLeapJalaaliYear(jy) {
+function isLeaphijriYear(jy) {
   return jalCal(jy).leap === 0
 }
 
 /*
-  Number of days in a given month in a Jalaali year.
+  Number of days in a given month in a hijri year.
 */
-function jalaaliMonthLength(jy, jm) {
+function hijriMonthLength(jy, jm) {
   if (jm <= 6) return 31
   if (jm <= 11) return 30
-  if (isLeapJalaaliYear(jy)) return 30
+  if (isLeaphijriYear(jy)) return 30
   return 29
 }
 
 /*
-  This function determines if the Jalaali (Persian) year is
+  This function determines if the hijri (Persian) year is
   leap (366-day long) or is the common year (365 days), and
   finds the day in March (Gregorian calendar) of the first
-  day of the Jalaali year (jy).
+  day of the hijri year (jy).
 
-  @param jy Jalaali calendar year (-61 to 3177)
+  @param jy hijri calendar year (-61 to 3177)
   @return
     leap: number of years since the last leap year (0 to 4)
-    gy: Gregorian year of the beginning of Jalaali year
+    gy: Gregorian year of the beginning of hijri year
     march: the March day of Farvardin the 1st (1st day of jy)
   @see: http://www.astro.uni.torun.pl/~kb/Papers/EMP/PersianC-EMP.htm
   @see: http://www.fourmilab.ch/documents/calendar/
 */
 function jalCal(jy) {
-  // Jalaali years starting the 33-year rule.
+  // hijri years starting the 33-year rule.
   var breaks =  [ -61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181, 1210
                 , 1635, 2060, 2097, 2192, 2262, 2324, 2394, 2456, 3178
                 ]
@@ -35055,9 +35055,9 @@ function jalCal(jy) {
     , i
 
   if (jy < jp || jy >= breaks[bl - 1])
-    throw new Error('Invalid Jalaali year ' + jy)
+    throw new Error('Invalid hijri year ' + jy)
 
-  // Find the limiting years for the Jalaali year jy.
+  // Find the limiting years for the hijri year jy.
   for (i = 1; i < bl; i += 1) {
     jm = breaks[i]
     jump = jm - jp
@@ -35069,7 +35069,7 @@ function jalCal(jy) {
   n = jy - jp
 
   // Find the number of leap years from AD 621 to the beginning
-  // of the current Jalaali year in the Persian calendar.
+  // of the current hijri year in the Persian calendar.
   leapJ = leapJ + div(n, 33) * 8 + div(mod(n, 33) + 3, 4)
   if (mod(jump, 33) === 4 && jump - n === 4)
     leapJ += 1
@@ -35095,11 +35095,11 @@ function jalCal(jy) {
 }
 
 /*
-  Converts a date of the Jalaali calendar to the Julian Day number.
+  Converts a date of the hijri calendar to the Julian Day number.
 
-  @param jy Jalaali year (1 to 3100)
-  @param jm Jalaali month (1 to 12)
-  @param jd Jalaali day (1 to 29/31)
+  @param jy hijri year (1 to 3100)
+  @param jm hijri month (1 to 12)
+  @param jd hijri day (1 to 29/31)
   @return Julian Day number
 */
 function j2d(jy, jm, jd) {
@@ -35108,13 +35108,13 @@ function j2d(jy, jm, jd) {
 }
 
 /*
-  Converts the Julian Day number to a date in the Jalaali calendar.
+  Converts the Julian Day number to a date in the hijri calendar.
 
   @param jdn Julian Day number
   @return
-    jy: Jalaali year (1 to 3100)
-    jm: Jalaali month (1 to 12)
-    jd: Jalaali day (1 to 29/31)
+    jy: hijri year (1 to 3100)
+    jm: hijri month (1 to 12)
+    jd: hijri day (1 to 29/31)
 */
 function d2j(jdn) {
   var gy = d2g(jdn).gy // Calculate Gregorian year (gy).
@@ -35141,7 +35141,7 @@ function d2j(jdn) {
       k -= 186
     }
   } else {
-    // Previous Jalaali year.
+    // Previous hijri year.
     jy -= 1
     k += 179
     if (r.leap === 1)
@@ -35216,12 +35216,12 @@ function mod(a, b) {
   return a - ~~(a / b) * b
 }
 })
-require.register("moment-jalaali", function (exports, module) {
+require.register("moment-hijri", function (exports, module) {
 
 module.exports = jMoment
 
 var moment = require('moment')
-  , jalaali = require('jalaali-js')
+  , hijri = require('hijri-js')
 
 /************************************
     Constants
@@ -35585,7 +35585,7 @@ function dateFromArray(config) {
   if (jd < 1 || jd > jMoment.jDaysInMonth(jy, jm) || jm < 0 || jm > 11)
     config._isValid = false
   g = toGregorian(jy, jm, jd)
-  j = toJalaali(g.gy, g.gm, g.gd)
+  j = tohijri(g.gy, g.gm, g.gd)
   config._jDiff = 0
   if (~~j.jy !== jy)
     config._jDiff += 1
@@ -35794,14 +35794,14 @@ jMoment.fn.jYear = function (input) {
     , j
     , g
   if (typeof input === 'number') {
-    j = toJalaali(this.year(), this.month(), this.date())
+    j = tohijri(this.year(), this.month(), this.date())
     lastDay = Math.min(j.jd, jMoment.jDaysInMonth(input, j.jm))
     g = toGregorian(input, j.jm, lastDay)
     setDate(this, g.gy, g.gm, g.gd)
     moment.updateOffset(this)
     return this
   } else {
-    return toJalaali(this.year(), this.month(), this.date()).jy
+    return tohijri(this.year(), this.month(), this.date()).jy
   }
 }
 
@@ -35815,7 +35815,7 @@ jMoment.fn.jMonth = function (input) {
       if (typeof input !== 'number')
         return this
     }
-    j = toJalaali(this.year(), this.month(), this.date())
+    j = tohijri(this.year(), this.month(), this.date())
     lastDay = Math.min(j.jd, jMoment.jDaysInMonth(j.jy, input))
     this.jYear(j.jy + div(input, 12))
     input = mod(input, 12)
@@ -35828,7 +35828,7 @@ jMoment.fn.jMonth = function (input) {
     moment.updateOffset(this)
     return this
   } else {
-    return toJalaali(this.year(), this.month(), this.date()).jm
+    return tohijri(this.year(), this.month(), this.date()).jm
   }
 }
 
@@ -35836,13 +35836,13 @@ jMoment.fn.jDate = function (input) {
   var j
     , g
   if (typeof input === 'number') {
-    j = toJalaali(this.year(), this.month(), this.date())
+    j = tohijri(this.year(), this.month(), this.date())
     g = toGregorian(j.jy, j.jm, input)
     setDate(this, g.gy, g.gm, g.gd)
     moment.updateOffset(this)
     return this
   } else {
-    return toJalaali(this.year(), this.month(), this.date()).jd
+    return tohijri(this.year(), this.month(), this.date()).jd
   }
 }
 
@@ -35961,7 +35961,7 @@ jMoment.jDaysInMonth = function (year, month) {
   }
 }
 
-jMoment.jIsLeapYear = jalaali.isLeapJalaaliYear
+jMoment.jIsLeapYear = hijri.isLeaphijriYear
 
 jMoment.loadPersian = function () {
   moment.locale('fa'
@@ -36014,22 +36014,22 @@ jMoment.loadPersian = function () {
   )
 }
 
-jMoment.jConvert =  { toJalaali: toJalaali
+jMoment.jConvert =  { tohijri: tohijri
                     , toGregorian: toGregorian
                     }
 
 /************************************
-    Jalaali Conversion
+    hijri Conversion
 ************************************/
 
-function toJalaali(gy, gm, gd) {
-  var j = jalaali.toJalaali(gy, gm + 1, gd)
+function tohijri(gy, gm, gd) {
+  var j = hijri.tohijri(gy, gm + 1, gd)
   j.jm -= 1
   return j
 }
 
 function toGregorian(jy, jm, jd) {
-  var g = jalaali.toGregorian(jy, jm + 1, jd)
+  var g = hijri.toGregorian(jy, jm + 1, jd)
   g.gm -= 1
   return g
 }
@@ -36048,10 +36048,10 @@ function mod(a, b) {
 });
 
 if (typeof exports == "object") {
-  module.exports = require("moment-jalaali");
+  module.exports = require("moment-hijri");
 } else if (typeof define == "function" && define.amd) {
-  define([], function(){ return require("moment-jalaali"); });
+  define([], function(){ return require("moment-hijri"); });
 } else {
-  this["moment"] = require("moment-jalaali");
+  this["moment"] = require("moment-hijri");
 }
 })();

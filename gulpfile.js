@@ -16,7 +16,7 @@ var paths = {
     dep: {
       angular: __dirname+'/node_modules/angular/angular.js',
       moment: __dirname+'/node_modules/moment/moment.js',
-      jmoment: __dirname+'/node_modules/moment-jalaali/build/moment-jalaali.js'
+      jmoment: __dirname+'/node_modules/moment-hijri/build/moment-hijri.js'
     },
     tmp: __dirname+'/.tmp/',
     dist: __dirname+'/dist/',
@@ -50,10 +50,10 @@ gulp.task('js', ['prerequisitiesJs'], function(){
         .pipe($.plumber(plumberErrorHandler))
         .pipe($.angularFilesort())
         .pipe($.ngAnnotate())
-        .pipe($.concat('ng-jalaali-flat-datepicker.js'))
+        .pipe($.concat('ng-hijri-flat-datepicker.js'))
         .pipe(gulp.dest(paths.dist))
         .pipe($.uglify())
-        .pipe($.rename('ng-jalaali-flat-datepicker.min.js'))
+        .pipe($.rename('ng-hijri-flat-datepicker.min.js'))
         .pipe(gulp.dest(paths.dist));
 });
 
@@ -62,10 +62,10 @@ gulp.task('sass', function(){
         .pipe($.plumber(plumberErrorHandler))
         .pipe($.sass({ outputStyle: 'expanded' }))
         .pipe($.autoprefixer({ browsers: ['last 2 versions'] }))
-        .pipe($.rename('ng-jalaali-flat-datepicker.css'))
+        .pipe($.rename('ng-hijri-flat-datepicker.css'))
         .pipe(gulp.dest(paths.dist))
         .pipe($.csso())
-        .pipe($.rename('ng-jalaali-flat-datepicker.min.css'))
+        .pipe($.rename('ng-hijri-flat-datepicker.min.css'))
         .pipe(gulp.dest(paths.dist));
 });
 
@@ -87,6 +87,6 @@ gulp.task('watch', function(){
 function getTemplatesStream() {
     return gulp.src(paths.src.html_template)
         .pipe($.angularTemplatecache('templates.js', {
-            module: 'ngJalaaliFlatDatepicker'
+            module: 'nghijriFlatDatepicker'
         }));
 }

@@ -1,13 +1,13 @@
-ng-flat-jalaali-datepicker
+ng-flat-hijri-datepicker
 ===
 
-Lightweight Angular.js datepicker directive built with Moment.js for jalaali Calendar.
+Lightweight Angular.js datepicker directive built with Moment.js for hijri Calendar.
 
-![ng-flat-jalaali-datepicker screenshot](http://s7.picofile.com/file/8252672284/taghvim.png)
+![ng-flat-hijri-datepicker screenshot](http://s7.picofile.com/file/8252672284/taghvim.png)
 
 ## Demo
 
-[See demo](http://thg303.github.io/jalaali-datepicker-demo/)
+[See demo](http://thg303.github.io/hijri-datepicker-demo/)
 
 ## Features
 * Custom ng-model date format: custom string or js date
@@ -19,24 +19,24 @@ Lightweight Angular.js datepicker directive built with Moment.js for jalaali Cal
 ## Requirements
 * Angularjs >=1.2
 * Moment.js
-* Moment-jalaali.js >=0.4.0
+* Moment-hijri.js >=0.4.0
 
 ## Installation
 
-1. `npm install --save ng-flat-jalaali-datepicker`
-2. Link `/dist/ng-flat-jalaali-datepicker.js`and `/dist/ng-flat-jalaali-datepicker.css`
-3. Add the module `'ngFlatjalaaliDatepicker'` as dependency of your angular module.
+1. `npm install --save ng-flat-hijri-datepicker`
+2. Link `/dist/ng-flat-hijri-datepicker.js`and `/dist/ng-flat-hijri-datepicker.css`
+3. Add the module `'ngFlathijriDatepicker'` as dependency of your angular module.
 
 ## Usage
 
 This is an attribute only directive.
 
 ```html
-<input type="text" ng-model="date" ng-flat-jalaali-datepicker>
+<input type="text" ng-model="date" ng-flat-hijri-datepicker>
 ```
 
 ```html
-<button ng-model="date" ng-flat-jalaali-datepicker>Pick a date</button>
+<button ng-model="date" ng-flat-hijri-datepicker>Pick a date</button>
 ```
 
 ## Options
@@ -46,7 +46,7 @@ This is an attribute only directive.
 * `gregorian-formatted-picked-date`: **String** - The picked date in Gregorian calendar
 * `gregorian-picked-date`: **Object** - The picked date in Gregorian calendar as a moment.js object
 ```html
-<input type="text" ng-model="date" datepicker-config="yourCustomConf" gregorian-formatted-picked-date="gfdate" gregorian-picked-date="gdate"  ng-flat-jalaali-datepicker>Pick a date</button>
+<input type="text" ng-model="date" datepicker-config="yourCustomConf" gregorian-formatted-picked-date="gfdate" gregorian-picked-date="gdate"  ng-flat-hijri-datepicker>Pick a date</button>
 picked date is {{gfdate}}
 ```
 
@@ -71,4 +71,4 @@ Just go to the project directory and:
 
 ## Credits
 * Design: [YannickAWE](https://github.com/YannickAWE)
-* moment-jalaali: [Behrang] (https://github.com/jalaali/moment-jalaali)
+* moment-hijri: [Behrang] (https://github.com/hijri/moment-hijri)

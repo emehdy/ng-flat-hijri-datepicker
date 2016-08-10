@@ -7,7 +7,7 @@
      */
 
      angular
-         .module('ngJalaaliFlatDatepicker')
+         .module('nghijriFlatDatepicker')
          .factory('datesCalculator', datesCalculator);
 
     function datesCalculator () {
